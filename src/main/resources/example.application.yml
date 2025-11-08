@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    azure:
+      credential:
+        client-id: value
+        client-secret: value
+      profile:
+        tenant-id: value
+      keyvault:
+        secret:
+          property-sources:
+            - name: my-keyvault
+              endpoint: https://<key-vault-name>.vault.azure.net/

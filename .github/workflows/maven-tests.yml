@@ -1,0 +1,35 @@
+name: Java CI with Maven
+
+# Коли запускати
+on:
+  push:
+    branches: [ main, master, develop ]  # При пуші в ці гілки
+  pull_request:
+    branches: [ main, master ]           # При створенні PR
+
+# Робота, яку виконує workflow
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Операційна система для виконання
+
+    steps:
+      # Крок 1: Завантажити код з репозиторію
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Крок 2: Встановити Java
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'  # Eclipse Temurin (раніше AdoptOpenJDK)
+          cache: maven              # Кешування Maven залежностей
+
+      # Крок 3: Запустити тести
+      - name: Run tests with Maven
+        run: mvn test
+
+      # Крок 4 (опціонально): Згенерувати звіт про покриття
+      - name: Generate test report
+        if: always()  # Виконувати навіть якщо тести впали
+        run: mvn surefire-report:report
