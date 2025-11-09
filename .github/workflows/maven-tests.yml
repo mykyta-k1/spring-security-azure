@@ -33,7 +33,7 @@ jobs:
 
       # Крок 3: Запустити тести
       - name: Run tests with Maven
-        run: mvn test
+        run: mvn test -Dlogging.level.com.azure=DEBUG -Dlogging.level.org.springframework.cloud.azure=DEBUG
 
       # Крок 4 (опціонально): Згенерувати звіт про покриття
       - name: Generate test report
