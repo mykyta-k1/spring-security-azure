@@ -87,13 +87,13 @@ public class UserRepository {
         log.warn("Load secret from Azure: {}", secret.substring(0, 3));
 
         conn = DriverManager.getConnection("jdbc:h2:mem:testdb", DB_USERNAME, DB_PASSWORD);
-        Statement s = conn.createStatement();
-        s.executeUpdate("""
-            CREATE TABLE IF NOT EXISTS users (
-                id BIGINT PRIMARY KEY,
-                username VARCHAR(255),
-                password VARCHAR(255)
-            )
-        """);
+//        Statement s = conn.createStatement();
+//        s.executeUpdate("""
+//            CREATE TABLE IF NOT EXISTS users (
+//                id BIGINT PRIMARY KEY,
+//                username VARCHAR(255),
+//                password VARCHAR(255)
+//            )
+//        """);
     }
 }
