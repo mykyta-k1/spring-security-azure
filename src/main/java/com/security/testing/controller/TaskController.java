@@ -2,8 +2,9 @@ package com.security.testing.controller;
 
 import static java.lang.System.out;
 
-import com.security.testing.model.User;
-import com.security.testing.service.contract.UserService;
+import com.security.testing.model.Task;
+import com.security.testing.service.contract.TaskService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,30 +16,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/v1/tasks")
 @RequiredArgsConstructor
-public class UserController {
+public class TaskController {
 
-    private final UserService userService;
+    private final TaskService taskService;
+
+    @GetMapping
+    public List<Task> getAllTasks() {
+        return taskService.getAll();
+    }
 
     @GetMapping("/{id}")
-    public User getById(@PathVariable Long id) {
-        return userService.getById(id);
+    public Task getTaskById(@PathVariable Long id) {
+        return taskService.getById(id);
     }
 
     @PostMapping
-    public User create(@RequestBody User user) {
-        return userService.create(user);
+    public Task createTask(@RequestBody Task task) {
+        return taskService.create(task);
     }
 
     @PutMapping("/{id}")
-    public User update(@PathVariable Long id, @RequestBody User user) {
+    public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
         out.println(id);
-        return userService.update(user);
+        return taskService.update(task);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        userService.delete(id);
+    public void deleteTask(@PathVariable Long id) {
+        taskService.delete(id);
     }
 }
