@@ -41,3 +41,6 @@ build/
 
 src/main/resources/application.yml
 src/main/resources/test-secret.txt
+
+.env
+!.env.example

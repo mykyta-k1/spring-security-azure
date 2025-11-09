@@ -12,6 +12,12 @@ jobs:
   test:
     runs-on: ubuntu-latest  # Операційна система для виконання
 
+    # Секрети що будуть передані з GitHub для запуску тестів
+    env:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+
     steps:
       # Крок 1: Завантажити код з репозиторію
       - name: Checkout code
