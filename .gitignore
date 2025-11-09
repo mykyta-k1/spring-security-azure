@@ -39,7 +39,5 @@ build/
 ### Mac OS ###
 .DS_Store
 
-src/main/resources/application.yml
-src/main/resources/test-secret.txt
-
+### Secrets ###
 .env
